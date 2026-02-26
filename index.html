@@ -709,15 +709,7 @@ function buildResult(){
       <p class="result-desc">${p.desc}</p>
 
       <!-- SECONDARY STYLE BLEND CARD -->
-    <div class="secondary-blend">
-  <div class="secondary-header" >
-    <img class="secondary-photo" src="${s.photo}" alt="${s.name}" onerror="this.style.background='linear-gradient(135deg,#A8C4A2,#7A9C6E)';">
-    <div class="secondary-info">
-      <div class="secondary-top">✦ Your secondary style (${adjSecondary}%)</div>
-     <div class="secondary-name">${s.emoji} ${s.name}</div>
-      <div class="secondary-desc">${s.desc.split('.')[0]}. Lean into this when you want to add warmth and personality to your primary style.</div>
-    </div>
-  </div>
+   
  
       <!-- PALETTE -->
       <div class="palette-row">
@@ -744,6 +736,15 @@ function buildResult(){
         <div class="cta-headline">Before you shop — read this first</div>
         <div class="cta-sub">The Before-You-Buy Checklist. Prevent expensive mistakes.</div>
       </div>
+       <div class="secondary-blend">
+  <div class="secondary-header" >
+    <img class="secondary-photo" src="${s.photo}" alt="${s.name}" onerror="this.style.background='linear-gradient(135deg,#A8C4A2,#7A9C6E)';">
+    <div class="secondary-info">
+      <div class="secondary-top">✦ Your secondary style (${adjSecondary}%)</div>
+     <div class="secondary-name">${s.emoji} ${s.name}</div>
+      <div class="secondary-desc">${s.desc.split('.')[0]}. Lean into this when you want to add warmth and personality to your primary style.</div>
+    </div>
+  </div>
       <button class="btn-cta" onclick="alert('Add your Gumroad checklist link here!')">Grab it →</button>
     </div>
   `;
