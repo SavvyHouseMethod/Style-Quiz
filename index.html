@@ -455,25 +455,6 @@ const questions = [
        scores:{japandi:0,scandi:0,industrial:0,cottage:1,eclectic:2,midcentury:2,bohemian:3,classic:2,contemporary:1,country:1}}
     ]
   },
-{
-    text:"Which colour palette makes your heart skip a beat?",
-    subtext:"Look at these — don't overthink it. Which one just feels right?",
-    isColorQuestion: true,
-    answers:[
-      {emoji:"",label:"Warm Neutrals",note:"Stone · Sand · Clay · Linen",
-       colors:["#C8B8A2","#E8DDD0","#A89080","#F5EFE6"],
-       scores:{japandi:3,scandi:2,industrial:0,cottage:1,eclectic:0,midcentury:0,bohemian:1,classic:1,contemporary:2,country:1}},
-      {emoji:"",label:"Cool Neutrals",note:"Concrete · Slate · Charcoal · White",
-       colors:["#8A8A8A","#4A4A4A","#D0D0D0","#FAFAFA"],
-       scores:{japandi:1,scandi:1,industrial:3,cottage:0,eclectic:0,midcentury:1,bohemian:0,classic:0,contemporary:3,country:0}},
-      {emoji:"",label:"Nature Greens",note:"Sage · Forest · Olive · Moss",
-       colors:["#8BA888","#4A6A52","#6B7B5A","#A8C4A2"],
-       scores:{japandi:2,scandi:3,industrial:0,cottage:2,eclectic:1,midcentury:1,bohemian:2,classic:1,contemporary:1,country:2}},
-      {emoji:"",label:"Rich Jewels",note:"Teal · Burgundy · Gold · Navy",
-       colors:["#3A6A8C","#8C3A52","#C9943A","#2A4A6A"],
-       scores:{japandi:0,scandi:0,industrial:0,cottage:1,eclectic:3,midcentury:2,bohemian:3,classic:3,contemporary:1,country:1}}
-    ]
-  },
   {
     text:"Your ideal floor underfoot is...",
     subtext:"Think about how it looks AND how it feels.",
@@ -588,25 +569,10 @@ function renderQuestion(){
 
   const grid = document.getElementById('answersGrid');
   grid.innerHTML = '';
-  q.answers.forEach((a,i) => {
+ q.answers.forEach((a,i) => {
     const btn = document.createElement('button');
     btn.className = 'answer-btn'+(answers[current]===i?' selected':'');
-    
-    // Check if this is the color question
-    if(q.isColorQuestion && a.colors){
-      btn.classList.add('color-answer');
-      const swatches = a.colors.map(c => `<div class="color-swatch" style="background:${c}"></div>`).join('');
-      btn.innerHTML = `
-        <div class="color-swatches">${swatches}</div>
-        <div class="answer-content">
-          <div class="answer-label">${a.label}</div>
-          <div class="answer-note">${a.note}</div>
-        </div>
-      `;
-    } else {
-      btn.innerHTML = `<span class="answer-emoji">${a.emoji}</span><div><div class="answer-label">${a.label}</div><div class="answer-note">${a.note}</div></div>`;
-    }
-    
+    btn.innerHTML = `<span class="answer-emoji">${a.emoji}</span><div><div class="answer-label">${a.label}</div><div class="answer-note">${a.note}</div></div>`;
     btn.onclick = () => selectAnswer(i);
     grid.appendChild(btn);
   });
