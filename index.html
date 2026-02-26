@@ -710,36 +710,15 @@ function buildResult(){
 
       <!-- SECONDARY STYLE BLEND CARD -->
     <div class="secondary-blend">
-  <div class="secondary-header" onclick="toggleSecondary()">
+  <div class="secondary-header" >
     <img class="secondary-photo" src="${s.photo}" alt="${s.name}" onerror="this.style.background='linear-gradient(135deg,#A8C4A2,#7A9C6E)';">
     <div class="secondary-info">
       <div class="secondary-top">✦ Your secondary style (${adjSecondary}%)</div>
-      <div class="secondary-name">
-        ${s.emoji} ${s.name}
-        <span class="secondary-toggle" id="secToggle">View full details ▼</span>
-      </div>
+     <div class="secondary-name">${s.emoji} ${s.name}</div>
       <div class="secondary-desc">${s.desc.split('.')[0]}. Lean into this when you want to add warmth and personality to your primary style.</div>
     </div>
   </div>
-  <div class="secondary-expand" id="secExpand">
-    <div class="result-traits">
-      ${s.traits.map(t=>`<span class="trait">${t}</span>`).join('')}
-    </div>
-    <p><strong>Full ${s.name} description:</strong> ${s.desc}</p>
-    <div class="palette-row" style="margin-top:16px;">
-      <div class="palette-label">${s.name} Colour Palette</div>
-      <div class="palette-swatches">
-        ${s.palette.map(sw=>`
-          <div class="swatch-item">
-            <div class="swatch" style="background:${sw.hex}"></div>
-            <div class="swatch-name">${sw.name}</div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-  </div>
-</div>
-
+ 
       <!-- PALETTE -->
       <div class="palette-row">
         <div class="palette-label">Your ${p.name} Colour Palette</div>
