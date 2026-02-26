@@ -721,23 +721,26 @@ function buildResult(){
       <div class="pieces-label">✦ Signature pieces for your style</div>
       <ul class="pieces-list">${piecesHtml}</ul>
 
-      <!-- MISTAKE -->
+<!-- MISTAKE -->
       <div class="mistake-box">
         <div class="mistake-title">⚠ The ${p.name} mistake to avoid</div>
         <div class="mistake-text">${p.mistake}</div>
       </div>
+    </div>
 
+    <!-- SECONDARY STYLE (now cleanly outside, before CTA) -->
+    <div class="secondary-blend">
+      <div class="secondary-header">
+        <img class="secondary-photo" src="${s.photo}" alt="${s.name}" onerror="this.style.background='linear-gradient(135deg,#A8C4A2,#7A9C6E)';">
+        <div class="secondary-info">
+          <div class="secondary-top">✦ Your secondary style (${adjSecondary}%)</div>
+          <div class="secondary-name">${s.emoji} ${s.name}</div>
+          <div class="secondary-desc">${s.desc.split('.')[0]}. Lean into this when you want to add warmth and personality to your primary style.</div>
+        </div>
+      </div>
     </div>
- <div class="secondary-blend">
-  <div class="secondary-header" >
-    <img class="secondary-photo" src="${s.photo}" alt="${s.name}" onerror="this.style.background='linear-gradient(135deg,#A8C4A2,#7A9C6E)';">
-    <div class="secondary-info">
-      <div class="secondary-top">✦ Your secondary style (${adjSecondary}%)</div>
-     <div class="secondary-name">${s.emoji} ${s.name}</div>
-      <div class="secondary-desc">${s.desc.split('.')[0]}. Lean into this when you want to add warmth and personality to your primary style.</div>
-    </div>
-  </div>
-    <!-- CTA -->
+
+    <!-- CTA (now separate and below secondary style) -->
     <div class="result-cta">
       <div>
         <div class="cta-eyebrow">Free Download</div>
@@ -747,7 +750,6 @@ function buildResult(){
       <button class="btn-cta" onclick="alert('Add your Gumroad checklist link here!')">Grab it →</button>
     </div>
   `;
-
   // Animate percentage bars after render
   setTimeout(()=>{
     document.getElementById('pctFill1').style.width = adjPrimary+'%';
@@ -756,7 +758,6 @@ function buildResult(){
     document.getElementById('pctNum2').textContent = adjSecondary+'%';
   }, 300);
 }
-
 function retakeQuiz(){
   current=0; answers=new Array(questions.length).fill(null);
   startQuiz();
