@@ -331,7 +331,13 @@ const styles = {
     traits:["Intentionally minimal","Natural textures","Warm neutrals","Wabi-sabi imperfection"],
     palette:[{hex:"#C8B8A2",name:"Warm Linen"},{hex:"#4A5C4E",name:"Forest Moss"},{hex:"#8C7B6B",name:"Weathered Stone"}],
     pieces:["A low-profile platform bed or sofa in pale oak","One oversized handmade ceramic vase (imperfect is perfect)","Linen curtains pooling slightly on the floor"],
-    mistake:"Buying 'minimal-looking' furniture that's actually cold and cheap. Japandi warmth comes from texture — linen, wood grain, aged clay — not from removing things."
+    mistake:"Buying 'minimal-looking' furniture that's actually cold and cheap. Japandi warmth comes from texture — linen, wood grain, aged clay — not from removing things.",
+    affiliates:[
+    {name:"Wall Light", price:"€32", retailer:"Amazon", link:"https://amzn.to/4sDCCsK"},
+    {name:"Clock", price:"€34", retailer:"Amazon", link:"https://amzn.to/4dbLe5r"},
+    {name:"Coffee Table", price:"€102", retailer:"Amazon", link:"https://amzn.to/47vj0ij"},
+    {name:"Mirror", price:"€55", retailer:"Amazon", link:"https://amzn.to/46w5dI3"}
+  ]
   },
   scandi: {
     name:"Scandinavian", emoji:"🕯️", tagline:"Hygge Heartwarmer",
@@ -736,24 +742,21 @@ function buildResult(){
         <div class="palette-swatches">${swatchesHtml}</div>
       </div>
 
-      <!-- AFFILIATE PRODUCTS - PLACEHOLDER FOR YOUR LINKS -->
-      <!-- TO ADD AFFILIATE LINKS: Find line with "AFFILIATE-${primaryKey.toUpperCase()}" and add your product HTML -->
-      <div class="affiliate-products" id="AFFILIATE-${primaryKey.toUpperCase()}">
-        <div class="affiliate-label">✦ Shop Your ${p.name} Style</div>
-        <div class="product-grid">
-          <!-- ADD YOUR 4 AFFILIATE PRODUCTS HERE -->
-          <!-- Example product card:
-          <a href="YOUR-AFFILIATE-LINK" target="_blank" class="product-card">
-            <div class="product-name">Linen Throw Pillow</div>
-            <div class="product-price">€45</div>
-            <div class="product-retailer">Zara Home</div>
-          </a>
-          -->
-          <div style="grid-column:1/-1; text-align:center; color:var(--light); font-size:13px; padding:12px;">
-            Affiliate products coming soon
-          </div>
-        </div>
-      </div>
+<!-- AFFILIATE PRODUCTS -->
+${p.affiliates ? `
+  <div class="affiliate-products">
+    <div class="affiliate-label">✦ Shop Your ${p.name} Style</div>
+    <div class="product-grid">
+      ${p.affiliates.map(prod => `
+        <a href="${prod.link}" target="_blank" class="product-card">
+          <div class="product-name">${prod.name}</div>
+          <div class="product-price">${prod.price}</div>
+          <div class="product-retailer">${prod.retailer}</div>
+        </a>
+      `).join('')}
+    </div>
+  </div>
+` : ''}
 
       <!-- PIECES -->
       <div class="pieces-label">✦ Signature pieces for your style</div>
